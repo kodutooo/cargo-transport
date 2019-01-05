@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DatePicker from 'react-date-picker';
 import Select from '../Elements/Select';
 import Input from '../Elements/Input';
+import Button from '../Elements/Button';
 import FormData from './FormData';
 import { STATUS_OPTIONS } from '../../config';
 import './Form.css';
@@ -56,6 +57,9 @@ class Form extends Component {
               maxDate={new Date()}
               disabled={isPending}/>
           </FormData>
+          <div>
+            <Button text='Add new shipment'/>
+          </div>
         </div>
       </form>
     );
