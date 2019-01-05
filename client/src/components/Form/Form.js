@@ -20,6 +20,7 @@ class Form extends Component {
   handleDateChange = date => this.setState({date});
 
   render() {
+    const isPending = this.state.status === 'Pending';
     return (
       <form>
         <Select 
@@ -41,7 +42,8 @@ class Form extends Component {
         <DatePicker 
           onChange={this.handleDateChange}
           value={this.state.date}
-          maxDate={new Date()}/>
+          maxDate={new Date()}
+          disabled={isPending}/>
       </form>
     );
   };
