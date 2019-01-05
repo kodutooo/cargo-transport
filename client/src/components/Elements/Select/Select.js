@@ -1,7 +1,8 @@
 import React from 'react';
 
 const select = props => {
-  const options = props.options.map(item => <option>{item}</option>);
+  const options = props.options.map((item, index) => 
+    <option key={index}>{item}</option>);
   return (
     <select 
       value={props.value}
