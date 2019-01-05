@@ -8,6 +8,10 @@ class Form extends Component {
     return (
       <form>
         <Select options={STATUS_OPTIONS} />
+        <label>From</label>
+        <Input />
+        <label>To</label>
+        <Input />
       </form>
     );
   };
