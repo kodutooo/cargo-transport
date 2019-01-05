@@ -1,0 +1,9 @@
+.shipment-form {
+  width: 60%;
+  margin: 10px auto;
+}
+
+.data-wrapper {
+  display: flex;
+  justify-content: center;
+}
