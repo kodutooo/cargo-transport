@@ -4,6 +4,12 @@ import Input from '../Elements/Input';
 import { STATUS_OPTIONS } from '../../config';
 
 class Form extends Component {
+  state = {
+    select: STATUS_OPTIONS[0],
+    from: '',
+    to: ''
+  };
+
   render() {
     return (
       <form>
