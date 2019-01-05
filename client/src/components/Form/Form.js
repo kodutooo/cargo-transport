@@ -23,6 +23,7 @@ class Form extends Component {
     const isPending = this.state.status === 'Pending';
     return (
       <form>
+        <label>Status</label>
         <Select 
           options={STATUS_OPTIONS} 
           value={this.state.status}
