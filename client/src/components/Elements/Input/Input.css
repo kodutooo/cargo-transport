@@ -1,5 +1,6 @@
 .form-input {
   min-height: 2.9rem;
+  width: 24rem;
   border: 1px solid #999999;
   padding: 0 5px;
   font-family: inherit;
