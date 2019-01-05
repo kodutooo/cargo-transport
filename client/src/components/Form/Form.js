@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Select from '../Elements/Select';
+import Input from '../Elements/Input';
 import { STATUS_OPTIONS } from '../../config';
 
 class Form extends Component {
