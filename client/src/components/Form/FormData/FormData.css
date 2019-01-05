@@ -1,5 +1,5 @@
 .form-data {
   display: flex;
   flex-flow: column nowrap;
-  margin: 0 15px;
+  margin: 10px 15px;
 }
