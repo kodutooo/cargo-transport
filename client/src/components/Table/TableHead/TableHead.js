@@ -1,13 +1,14 @@
 import React from 'react';
+import './TableHead.css';
 
 const tableHead = () => {
   return(
     <thead>
       <tr>
-        <th>Status</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Est. arrival</th>
+        <th className='main-table-header'>Status</th>
+        <th className='main-table-header'>From</th>
+        <th className='main-table-header'>To</th>
+        <th className='main-table-header'>Est. arrival</th>
       </tr>
     </thead>
   );
