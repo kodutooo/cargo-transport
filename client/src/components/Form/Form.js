@@ -57,7 +57,7 @@ class Form extends Component {
               maxDate={new Date()}
               disabled={isPending}/>
           </FormData>
-          <div>
+          <div className='button-wrapper'>
             <Button text='Add new shipment'/>
           </div>
         </div>

@@ -8,3 +8,9 @@
   flex-flow: row wrap;
   justify-content: center;
 }
+
+.button-wrapper {
+  display: flex;
+  align-items: flex-end;
+  margin: 10px 15px;
+}
