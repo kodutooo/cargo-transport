@@ -7,7 +7,7 @@ const button = props => {
       className='form-button'
       type={props.type || 'button'}
       onClick={props.handleClick}>
-      {props.text}
+      {props.icon || ''}{props.text}
     </button>
   );
 };

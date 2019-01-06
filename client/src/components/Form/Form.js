@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-date-picker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Select from '../Elements/Select';
 import Input from '../Elements/Input';
 import Button from '../Elements/Button';
@@ -58,7 +59,9 @@ class Form extends Component {
               disabled={isPending}/>
           </FormData>
           <div className='button-wrapper'>
-            <Button text='Add new shipment'/>
+            <Button 
+              text='Add new shipment'
+              icon={<FontAwesomeIcon icon='plus'/>}/>
           </div>
         </div>
       </form>
