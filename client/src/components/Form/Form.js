@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import DatePicker from 'react-date-picker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { addShipment } from '../../actionCreators/shipments';
 import Select from '../Elements/Select';
 import Input from '../Elements/Input';
 import Button from '../Elements/Button';
@@ -22,6 +24,10 @@ class Form extends Component {
   }
 
   handleDateChange = date => this.setState({date});
+
+  submitForm = () => {
+    this.props.addShipment(this.state);
+  }
 
   render() {
     const isPending = this.state.status === 'Pending';
@@ -62,7 +68,8 @@ class Form extends Component {
           <div className='button-wrapper'>
             <Button 
               text='Add new shipment'
-              icon={<FontAwesomeIcon icon='plus'/>}/>
+              icon={<FontAwesomeIcon icon='plus'/>}
+              handleClick={this.submitForm}/>
           </div>
         </div>
       </form>
@@ -70,4 +77,9 @@ class Form extends Component {
   };
 };
 
-export default Form;
+const mapDispatchToProps = { addShipment };
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Form);
