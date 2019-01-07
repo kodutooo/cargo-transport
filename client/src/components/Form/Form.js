@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DatePicker from 'react-date-picker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { addShipment } from '../../actionCreators/shipments';
+import { sendNewShipment } from '../../actionCreators/shipments';
 import Select from '../Elements/Select';
 import Input from '../Elements/Input';
 import Button from '../Elements/Button';
@@ -27,10 +27,10 @@ class Form extends Component {
 
   submitForm = () => {
     const data = {...this.state};
-    data.status === 'Pending'
-    ? data.date = null
-    : null;
-    this.props.addShipment(data);
+    if (data.status === 'Pending') {
+      data.date = null;
+    };
+    this.props.sendNewShipment(data);
   }
 
   render() {
@@ -81,7 +81,7 @@ class Form extends Component {
   };
 };
 
-const mapDispatchToProps = { addShipment };
+const mapDispatchToProps = { sendNewShipment };
 
 export default connect(
   null,

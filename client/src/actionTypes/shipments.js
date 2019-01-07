@@ -1,1 +1,2 @@
 export const NEW_SHIPMENT = 'NEW_SHIPMENT';
+export const INITIAL_SHIPMENTS = 'INITIAL_SHIPMENTS';
