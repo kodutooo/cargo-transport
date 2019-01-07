@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TableHead from './TableHead';
+import TableBody from './TableBody';
 import './Table.css';
 
 class Table extends Component {
@@ -7,6 +8,7 @@ class Table extends Component {
     return (
       <table className='main-table'>
         <TableHead />
+        <TableBody />
       </table>
     );
   };

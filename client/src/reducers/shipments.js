@@ -1,6 +1,8 @@
 import { NEW_SHIPMENT } from '../actionTypes/shipments';
 
-const defaultStore = {};
+const defaultStore = {
+  shipments: []
+};
 
 function shipments(store = defaultStore, action) {
 
