@@ -1,5 +1,5 @@
 import store from '../store';
-import { INITIAL_SHIPMENTS, EDIT_SHIPMENT } from '../actionTypes/shipments';
+import { INITIAL_SHIPMENTS, EDIT_SHIPMENT, DELETE_SHIPMENT } from '../actionTypes/shipments';
 const { dispatch } = store;
 
 const socket = window.io();
@@ -8,6 +8,9 @@ socket.on('list of shipments', data => {
 });
 socket.on('edit shipment', data => {
   dispatch(editExistingShipment(data));
+});
+socket.on('delete shipment', id => {
+  dispatch(deleteExistingShipment(id));
 });
 
 function setInitialShipments(data) {
@@ -29,11 +32,22 @@ export function sendShipmentChanges(data) {
   }
 }
 
+export function sendDeleteInfo(id) {
+  return () => {
+    socket.emit('delete shipment', id);
+  }
+}
+
 function editExistingShipment(data) {
   return {
     type: EDIT_SHIPMENT,
     payload: data
-  }
-}
+  };
+};
 
-export function deleteExistingShipment(id) {}
+function deleteExistingShipment(id) {
+  return {
+    type: DELETE_SHIPMENT,
+    payload: {id}
+  };
+};

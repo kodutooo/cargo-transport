@@ -6,7 +6,7 @@ import Input from '../../Elements/Input';
 import Button from '../../Elements/Button';
 import FormData from '../../Form/FormData';
 import { STATUS_OPTIONS } from '../../../config';
-import { sendShipmentChanges } from '../../../actionCreators/shipments';
+import { sendShipmentChanges, sendDeleteInfo } from '../../../actionCreators/shipments';
 
 class TableForm extends Component {
   state = {
@@ -44,6 +44,11 @@ class TableForm extends Component {
     data.id = this.props.id;
     this.props.handleFocusOut();
     this.props.sendShipmentChanges(data);
+  }
+
+  deleteItem = () => {
+    this.props.handleFocusOut();
+    this.props.sendDeleteInfo(this.props.id);
   }
 
   render() {
@@ -93,7 +98,8 @@ class TableForm extends Component {
             handleClick={this.sendChanges}
           />
           <Button
-            text='Delete shipment' 
+            text='Delete shipment'
+            handleClick={this.deleteItem} 
           />
         </td>
       </tr>
@@ -101,6 +107,6 @@ class TableForm extends Component {
   }
 };
 
-const mapDispatchToProps = { sendShipmentChanges };
+const mapDispatchToProps = { sendShipmentChanges, sendDeleteInfo };
 
 export default connect(null, mapDispatchToProps)(TableForm);
