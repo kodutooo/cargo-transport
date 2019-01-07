@@ -52,7 +52,8 @@ class Form extends Component {
           </FormData>
           <FormData>
             <label>Shipped On</label>
-            <DatePicker 
+            <DatePicker
+              calendarClassName='date-picker' 
               onChange={this.handleDateChange}
               value={this.state.date}
               maxDate={new Date()}

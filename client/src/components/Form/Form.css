@@ -9,6 +9,11 @@
   justify-content: center;
 }
 
+.date-picker {
+  position: absolute;
+  top: 0;
+}
+
 .button-wrapper {
   display: flex;
   align-items: flex-end;
