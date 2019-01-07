@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import DatePicker from 'react-date-picker';
 import Select from '../../Elements/Select';
 import Input from '../../Elements/Input';
 import Button from '../../Elements/Button';
 import FormData from '../../Form/FormData';
 import { STATUS_OPTIONS } from '../../../config';
+import { sendShipmentChanges } from '../../../actionCreators/shipments';
 
 class TableForm extends Component {
   state = {
     status: this.props.status,
     from: this.props.from,
     to: this.props.to,
-    shippedOn: this.props.to
+    shippedOn: new Date(this.props.shippedOn)
   }
 
   componentRef = React.createRef();
 
   componentDidMount() {
-    this.componentRef.current.focus();
+    document.addEventListener('mousedown', this.handleClick);
   }
 
-  componentDidUpdate() {
-    this.componentRef.current.focus();
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClick);
+  }
+
+  handleClick = event => {
+    if (!this.componentRef.current.contains(event.target)) {
+      this.props.handleFocusOut();
+    }
   }
 
   handleChange = event => {
@@ -29,10 +37,19 @@ class TableForm extends Component {
     this.setState({[name]: value});
   }
 
+  handleDateChange = date => this.setState({shippedOn: date});
+
+  sendChanges = () => {
+    const data = {...this.state};
+    data.id = this.props.id;
+    this.props.handleFocusOut();
+    this.props.sendShipmentChanges(data);
+  }
+
   render() {
     const isPending = this.state.status === 'Pending';
     return(
-      <tr tabIndex='0' onBlur={this.props.handleFocusOut} ref={this.componentRef}>
+      <tr ref={this.componentRef}>
         <td>
           <FormData>
             <label>Status</label>
@@ -67,14 +84,23 @@ class TableForm extends Component {
             <DatePicker
               calendarClassName='date-picker' 
               onChange={this.handleDateChange}
-              value={this.state.date}
+              value={this.state.shippedOn}
               maxDate={new Date()}
               disabled={isPending}/>
           </FormData>
+          <Button 
+            text='Save changes'
+            handleClick={this.sendChanges}
+          />
+          <Button
+            text='Delete shipment' 
+          />
         </td>
       </tr>
     )
   }
 };
 
-export default TableForm;
+const mapDispatchToProps = { sendShipmentChanges };
+
+export default connect(null, mapDispatchToProps)(TableForm);

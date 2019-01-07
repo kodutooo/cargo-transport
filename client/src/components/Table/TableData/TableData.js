@@ -4,10 +4,6 @@ import TableForm from '../TableForm';
 class TableData extends Component {
   state = {
     focused: false,
-    status: this.props.status,
-    from: this.props.from,
-    to: this.props.to,
-    shippedOn: this.props.shippedOn
   }
 
   handleFocusIn = () => {
@@ -19,7 +15,7 @@ class TableData extends Component {
   }
 
   render() {
-    const { status, from, to, shippedOn } = this.state;
+    const { status, from, to, shippedOn } = this.props;
     if (this.state.focused) {
       return(
         <TableForm 
@@ -27,12 +23,13 @@ class TableData extends Component {
           from={from}
           to={to}
           shippedOn={shippedOn}
+          id={this.props.id}
           handleFocusOut={this.handleFocusOut}
         />
       )
     }
     return (
-      <tr onFocus={this.handleFocusIn} tabIndex='0'>
+      <tr onClick={this.handleFocusIn}>
         <td>{status}</td>
         <td>{from}</td>
         <td>{to}</td>
