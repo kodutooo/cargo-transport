@@ -8,6 +8,12 @@ function attachSocket(server) {
     socket.on('new shipment', shipment =>{
       handleNewShipment(shipment, socket, io);
     });
+    socket.on('edit shipment', shipment =>{
+      handleShipmentEdit(shipment, socket, io);
+    });
+    socket.on('delete shipment', id =>{
+      handleShipmentDelete(id, socket, io);
+    });
   });
 };
 
@@ -32,6 +38,34 @@ function handleNewShipment(shipment, socket, io) {
 
 function handleError(err, socket){
   socket.emit('error', err);
+}
+
+function handleShipmentEdit(data, socket, io) {
+  Shipment.findById(data.id, (err, shipment) => {
+    if (err) {
+      return handleError(err, socket);
+    };
+    const { status, from, to, shippedOn } = data;
+    shipment.status = status;
+    shipment.from = from;
+    shipment.to = to;
+    shipment.shippedOn = shippedOn;
+    shipment.save((err, updatedShipment) => {
+      if (err) {
+        return handleError(err, socket);
+      };
+      io.emit('edit shipment', updatedShipment.toObject());
+    })
+  })
+}
+
+function handleShipmentDelete(id, socket, io) {
+  Shipment.findByIdAndDelete(id, err => {
+    if (err) {
+      return handleError(err, socket);
+    };
+    io.emit('delete shipment', id);
+  })
 }
 
 module.exports = { attachSocket };
