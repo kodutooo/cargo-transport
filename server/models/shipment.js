@@ -1,6 +1,6 @@
 const mongoose, { Schema, model } = require('mongoose');
 
-const shippingSchema = new Schema({
+const shipmentSchema = new Schema({
   status: {
     type: String,
     enum: ['Pending', 'In transit', 'Arrived'],
@@ -21,4 +21,4 @@ const shippingSchema = new Schema({
   }
 });
 
-module.exports = model('shipping', shippingSchema);
+module.exports = model('shipment', shipmentSchema);
