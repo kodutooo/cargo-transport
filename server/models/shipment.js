@@ -21,7 +21,6 @@ const shipmentSchema = new Schema({
     },
     validate: {
       validator: function(value) {
-        console.log(value);
         if (this.status === 'Pending') {
           return value === null;
         }
