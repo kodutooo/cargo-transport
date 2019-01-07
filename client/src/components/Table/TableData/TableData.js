@@ -16,13 +16,16 @@ class TableData extends Component {
 
   render() {
     const { status, from, to, shippedOn } = this.props;
+    const shippedDate = shippedOn === null
+    ? null
+    : Date(shippedOn); 
     if (this.state.focused) {
       return(
         <TableForm 
           status={status}
           from={from}
           to={to}
-          shippedOn={shippedOn}
+          shippedOn={shippedDate}
           id={this.props.id}
           handleFocusOut={this.handleFocusOut}
         />
@@ -33,7 +36,7 @@ class TableData extends Component {
         <td>{status}</td>
         <td>{from}</td>
         <td>{to}</td>
-        <td>{shippedOn || '&mdash'}</td>
+        <td>{shippedOn || '—'}</td>
       </tr>
     );
   }

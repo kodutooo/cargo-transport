@@ -13,7 +13,7 @@ class TableForm extends Component {
     status: this.props.status,
     from: this.props.from,
     to: this.props.to,
-    shippedOn: new Date(this.props.shippedOn)
+    shippedOn: this.props.shippedOn
   }
 
   componentRef = React.createRef();
@@ -42,6 +42,9 @@ class TableForm extends Component {
   sendChanges = () => {
     const data = {...this.state};
     data.id = this.props.id;
+    if (this.state.status === 'Pending') {
+      data.shippedOn = null;
+    };
     this.props.handleFocusOut();
     this.props.sendShipmentChanges(data);
   }

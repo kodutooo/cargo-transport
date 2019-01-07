@@ -12,7 +12,7 @@ class TableBody extends Component {
           status={status}
           from={from}
           to={to}
-          shippedOn={item.shippedOn}
+          shippedOn={item.shippedOn || null}
           id={_id} 
         />
       } 
