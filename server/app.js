@@ -1,6 +1,6 @@
 require('dotenv').config();
 const { PORT, MONGODB_ADDRESS } = process.env;
-const PATH_TO_CLIENT = '../client/src';
+const PATH_TO_CLIENT = '../client/build';
 
 const http = require('http');
 const express = require('express');
