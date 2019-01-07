@@ -1,4 +1,4 @@
-const mongoose, { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const shipmentSchema = new Schema({
   status: {
