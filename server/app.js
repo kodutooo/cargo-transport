@@ -4,9 +4,9 @@ const PATH_TO_CLIENT = '../client/src';
 
 const http = require('http');
 const express = require('express');
-const socket = require('socket.io');
 const path = require('path');
 const mongoose = require('mongoose');
+const { attachSocket } = require('./sockets/shipment');
 
 mongoose.connect(MONGODB_ADDRESS, { useNewUrlParser: true });
 const db = mongoose.connection;
@@ -15,9 +15,7 @@ db.once('open', () => console.log('MongoDB connected...'));
 
 const app = express();
 const server = http.createServer(app);
-
-const io = socket(server);
-io.on('connection', () => console.log('user connected...'));
+attachSocket(server);
 
 app.use(express.static(path.resolve(__dirname, PATH_TO_CLIENT)));
 
