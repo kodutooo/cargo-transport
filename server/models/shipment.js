@@ -16,12 +16,12 @@ const shipmentSchema = new Schema({
   },
   shippedOn: {
     type: Date,
-    default: Date.now(),
     required: function() {
       return this.status !== 'Pending';
     },
     validate: {
       validator: function(value) {
+        console.log(value);
         if (this.status === 'Pending') {
           return value === null;
         }
