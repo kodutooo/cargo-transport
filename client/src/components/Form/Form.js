@@ -26,7 +26,11 @@ class Form extends Component {
   handleDateChange = date => this.setState({date});
 
   submitForm = () => {
-    this.props.addShipment(this.state);
+    const data = {...this.state};
+    data.status === 'Pending'
+    ? data.date = null
+    : null;
+    this.props.addShipment(data);
   }
 
   render() {
