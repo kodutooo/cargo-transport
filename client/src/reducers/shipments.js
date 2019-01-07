@@ -8,6 +8,11 @@ function shipments(state = defaultState, action) {
   switch(action.type) {
     case INITIAL_SHIPMENTS:
       return {...state, listOfShipments: action.payload};
+    case NEW_SHIPMENT: {
+      const stateCopy = {...state, listOfShipments: [...state.listOfShipments]};
+      stateCopy.listOfShipments.push(action.payload);
+      return stateCopy;
+    }
     case EDIT_SHIPMENT: {
       const stateCopy = {...state, listOfShipments: [...state.listOfShipments]};
       const shipment = stateCopy.listOfShipments.find(item => item._id === action.payload._id);
