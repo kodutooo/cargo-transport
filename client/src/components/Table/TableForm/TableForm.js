@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DatePicker from 'react-date-picker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Select from '../../Elements/Select';
 import Input from '../../Elements/Input';
 import Button from '../../Elements/Button';
@@ -99,6 +100,7 @@ class TableForm extends Component {
                 handleClick={this.sendChanges}
               />
               <Button
+                icon={<FontAwesomeIcon icon='trash-alt' style={{marginRight: '2px'}}/>}
                 text='Delete shipment'
                 color='red'
                 handleClick={this.deleteItem} 

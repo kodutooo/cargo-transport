@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import PageHeader from '../PageHeader';
 import Table from '../Table';
 import Form from '../Form';
 import './App.css';
 
-library.add(faPlus);
+library.add(faPlus, faTrashAlt);
 
 class App extends Component {
   render() {
