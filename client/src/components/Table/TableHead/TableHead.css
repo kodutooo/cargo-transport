@@ -1,4 +1,7 @@
 .main-table-header {
+  padding: 5px;
+  font-size: 1.6rem;
+  font-weight: bold;
   border: 1px solid #000000;
-  background-color: #e3d26f;
+  background-color: #E1F5FE;
 }
