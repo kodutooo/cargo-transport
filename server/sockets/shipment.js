@@ -37,7 +37,7 @@ function handleNewShipment(shipment, socket, io) {
 };
 
 function handleError(err, socket){
-  socket.emit('error', err);
+  socket.emit('validation error', err);
 }
 
 function handleShipmentEdit(data, socket, io) {
