@@ -1,12 +1,18 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import { reducer as toastrReducer } from 'react-redux-toastr';
 import shipments from '../reducers/shipments';
 
-const store = createStore(
+const reducers = {
   shipments,
-  compose(applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-  
+  toastr: toastrReducer
+}
+
+const rootReducer = combineReducers(reducers);
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk),
 );
 
 export default store;

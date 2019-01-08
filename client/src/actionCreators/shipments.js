@@ -1,3 +1,4 @@
+import { toastr } from 'react-redux-toastr';
 import store from '../store';
 import { INITIAL_SHIPMENTS, NEW_SHIPMENT, EDIT_SHIPMENT, DELETE_SHIPMENT } from '../actionTypes/shipments';
 const { dispatch } = store;
@@ -14,6 +15,14 @@ socket.on('edit shipment', data => {
 });
 socket.on('delete shipment', id => {
   dispatch(deleteExistingShipment(id));
+});
+socket.on('validation error', data => {
+  const { errors } = data;
+  Object.keys(errors).forEach(key => {
+    if (errors.hasOwnProperty(key)) {
+      toastr.error(errors[key]['message']);
+    }
+  });
 });
 
 function setInitialShipments(data) {

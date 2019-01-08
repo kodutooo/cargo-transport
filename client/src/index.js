@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import ReduxToastr from 'react-redux-toastr';
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 import store from './store';
 import './index.css';
 import App from './components/App';
@@ -9,6 +11,9 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <Provider store={store}>
     <App />
+    <ReduxToastr 
+      preventDuplicates
+    />
   </Provider>, 
   document.getElementById('root')
 );

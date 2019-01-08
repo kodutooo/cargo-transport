@@ -27,7 +27,7 @@ class TableBody extends Component {
 
 const mapStateToProps = state => {
   return {
-    shipments: state.listOfShipments
+    shipments: state.shipments.listOfShipments
   }
 };
 
