@@ -31,6 +31,16 @@ class Form extends Component {
       data.date = null;
     };
     this.props.sendNewShipment(data);
+    this.clearForm();
+  }
+
+  clearForm = () => {
+    this.setState({
+      status: STATUS_OPTIONS[0],
+      from: '',
+      to: '',
+      shippedOn: null
+    });
   }
 
   render() {
