@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import TableData from '../TableData';
+import TableRow from '../TableRow';
 
 class TableBody extends Component {
   render() {
     const data = this.props.shipments.map(item =>
       {
         const {status, from, to, _id} = item;
-        return <TableData
+        return <TableRow
           key={_id}
           status={status}
           from={from}
