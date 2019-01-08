@@ -41,7 +41,7 @@ class Form extends Component {
   validateForm() {
     let errors = 0;
     if (this.state.from.length === 0) {
-      toastr.error('From filed cannot be empty');
+      toastr.error('From field cannot be empty');
       errors++;
     };
     if (this.state.to.length === 0) {
