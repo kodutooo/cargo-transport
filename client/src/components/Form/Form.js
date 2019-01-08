@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { toastr } from 'react-redux-toastr';
 import DatePicker from 'react-date-picker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { sendNewShipment } from '../../actionCreators/shipments';
@@ -26,12 +27,32 @@ class Form extends Component {
   handleDateChange = date => this.setState({shippedOn: date});
 
   submitForm = () => {
+    if (!this.validateForm()) {
+      return;
+    }
     const data = {...this.state};
     if (data.status === 'Pending') {
       data.date = null;
     };
     this.props.sendNewShipment(data);
     this.clearForm();
+  }
+
+  validateForm() {
+    let errors = 0;
+    if (this.state.from.length === 0) {
+      toastr.error('From filed cannot be empty');
+      errors++;
+    };
+    if (this.state.to.length === 0) {
+      toastr.error('To field cannot be empty');
+      errors++;
+    };
+    if (this.state.status !== 'Pending' && this.state.shippedOn === null) {
+      toastr.error('Please provide a valid date for Shipped On field');
+      errors++;
+    };
+    return errors === 0;
   }
 
   clearForm = () => {
