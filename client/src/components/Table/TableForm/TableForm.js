@@ -98,6 +98,7 @@ class TableForm extends Component {
           </FormData>
           <Button 
             text='Save changes'
+            style={{marginRight: '5px'}}
             handleClick={this.sendChanges}
           />
           <Button
