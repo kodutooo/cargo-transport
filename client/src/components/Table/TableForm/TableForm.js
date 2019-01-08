@@ -57,10 +57,9 @@ class TableForm extends Component {
   render() {
     const isPending = this.state.status === 'Pending';
     return(
-      <tr ref={this.componentRef}>
+      <tr ref={this.componentRef} className='table-form'>
         <td>
           <FormData>
-            <label>Status</label>
             <Select 
               options={STATUS_OPTIONS} 
               value={this.state.status}
@@ -70,7 +69,6 @@ class TableForm extends Component {
         </td>
         <td>
           <FormData>
-            <label>From</label>
             <Input 
               value={this.state.from}
               name='from'
@@ -79,7 +77,6 @@ class TableForm extends Component {
         </td>
         <td>
           <FormData>
-            <label>To</label>
             <Input 
               value={this.state.to}
               name='to'
@@ -88,23 +85,24 @@ class TableForm extends Component {
         </td>
         <td>
           <FormData>
-            <label>Shipped On</label>
             <DatePicker
               calendarClassName='date-picker' 
               onChange={this.handleDateChange}
               value={this.state.shippedOn}
               maxDate={new Date()}
               disabled={isPending}/>
+            <div style={{marginTop: '3px'}}>
+              <Button 
+                text='Save changes'
+                style={{marginRight: '5px'}}
+                handleClick={this.sendChanges}
+              />
+              <Button
+                text='Delete shipment'
+                handleClick={this.deleteItem} 
+              />
+            </div>
           </FormData>
-          <Button 
-            text='Save changes'
-            style={{marginRight: '5px'}}
-            handleClick={this.sendChanges}
-          />
-          <Button
-            text='Delete shipment'
-            handleClick={this.deleteItem} 
-          />
         </td>
       </tr>
     )
