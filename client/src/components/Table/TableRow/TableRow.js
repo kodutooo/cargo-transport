@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import TableData from '../TableData';
 import TableForm from '../TableForm';
 
-class TableData extends Component {
+class TableRow extends Component {
   state = {
     focused: false,
   }
@@ -33,13 +34,13 @@ class TableData extends Component {
     }
     return (
       <tr onClick={this.handleFocusIn}>
-        <td>{status}</td>
-        <td>{from}</td>
-        <td>{to}</td>
-        <td>{shippedOn || '—'}</td>
+        <TableData>{status}</TableData>
+        <TableData>{from}</TableData>
+        <TableData>{to}</TableData>
+        <TableData>{shippedOn || '—'}</TableData>
       </tr>
     );
   }
 };
 
-export default TableData;
+export default TableRow;
