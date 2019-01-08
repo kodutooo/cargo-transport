@@ -15,7 +15,7 @@ class Form extends Component {
     status: STATUS_OPTIONS[0],
     from: '',
     to: '',
-    date: null
+    shippedOn: null
   };
 
   handleChange = event => {
@@ -23,7 +23,7 @@ class Form extends Component {
     this.setState({[name]: value});
   }
 
-  handleDateChange = date => this.setState({date});
+  handleDateChange = date => this.setState({shippedOn: date});
 
   submitForm = () => {
     const data = {...this.state};
@@ -65,7 +65,7 @@ class Form extends Component {
             <DatePicker
               calendarClassName='date-picker' 
               onChange={this.handleDateChange}
-              value={this.state.date}
+              value={this.state.shippedOn}
               maxDate={new Date()}
               disabled={isPending}/>
           </FormData>

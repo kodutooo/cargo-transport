@@ -19,7 +19,7 @@ class TableRow extends Component {
     const { status, from, to, shippedOn } = this.props;
     const shippedDate = shippedOn === null
     ? null
-    : Date(shippedOn); 
+    : new Date(shippedOn); 
     if (this.state.focused) {
       return(
         <TableForm 
@@ -32,12 +32,15 @@ class TableRow extends Component {
         />
       )
     }
+    const formattedDate = shippedDate === null
+    ? null
+    : `${shippedDate.getDate()}/${shippedDate.getMonth() + 1}/${shippedDate.getFullYear()}`
     return (
       <tr onClick={this.handleFocusIn}>
         <TableData>{status}</TableData>
         <TableData>{from}</TableData>
         <TableData>{to}</TableData>
-        <TableData>{shippedOn || '—'}</TableData>
+        <TableData>{formattedDate || '—'}</TableData>
       </tr>
     );
   }
