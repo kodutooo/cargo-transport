@@ -94,11 +94,13 @@ class TableForm extends Component {
             <div style={{marginTop: '3px'}}>
               <Button 
                 text='Save changes'
+                color='green'
                 style={{marginRight: '5px'}}
                 handleClick={this.sendChanges}
               />
               <Button
                 text='Delete shipment'
+                color='red'
                 handleClick={this.deleteItem} 
               />
             </div>

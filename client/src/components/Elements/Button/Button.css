@@ -5,11 +5,30 @@
   font-size: 1.4rem;
   border: none;
   border-radius: 2px;
-  background-color: #7e57c2;
   cursor: pointer;
   transition: background-color 0.2s linear;
 }
 
-.form-button:hover {
-  background-color: #4d2c91;
+.button-green {
+  background-color: #43A047;
+}
+
+.button-green:hover {
+  background-color: #2E7D32;
+}
+
+.button-red {
+  background-color: #FF1744;
+}
+
+.button-red:hover {
+  background-color: #D50000;
+}
+
+.button-blue {
+  background-color: #2979FF;
+}
+
+.button-blue:hover {
+  background-color: #2962FF;
 }
